@@ -123,3 +123,44 @@ if(!function_exists('event_register_metabox')):
 
 	}
 endif; 
+
+/*==================================
+ Registering Event Type Taxonomy
+ ==================================*/
+if(! function_exists('register_event_type_taxonomy')):
+	add_action('init', 'register_event_type_taxonomy');
+	function register_event_type_taxonomy() {
+ 
+    $labels = array(
+        'name'              => _x( 'Event Types', 'taxonomy general name', 'event-plugin' ),
+        'singular_name'     => _x( 'Event Types', 'taxonomy singular name', 'event-plugin' ),
+        'search_items'      => __( 'Search Event Types', 'event-plugin' ),
+        'all_items'         => __( 'All Event Types', 'event-plugin' ),
+        'view_item'         => __( 'View Event Types', 'event-plugin' ),
+        'parent_item'       => __( 'Parent Event Types', 'event-plugin' ),
+        'parent_item_colon' => __( 'Parent Event Types:', 'event-plugin' ),
+        'edit_item'         => __( 'Edit Event Types', 'event-plugin' ),
+        'update_item'       => __( 'Update Event Types', 'event-plugin' ),
+        'add_new_item'      => __( 'Add New Event Types', 'event-plugin' ),
+        'new_item_name'     => __( 'New Event Types Name', 'event-plugin' ),
+        'not_found'         => __( 'No Event Types Found', 'event-plugin' ),
+        'back_to_items'     => __( 'Back to Event Types', 'event-plugin' ),
+        'menu_name'         => __( 'Event Types', 'event-plugin' ),
+    );
+ 
+    $args = array(
+        'labels'            => $labels,
+        'hierarchical'      => true,
+        'public'            => true,
+        'show_ui'           => true,
+        'show_admin_column' => true,
+        'query_var'         => true,
+        'rewrite'           => array( 'slug' => 'event-types' ),
+        'show_in_rest'      => true,
+    );
+ 
+ 
+    register_taxonomy( 'event-type', 'event', $args );
+ 
+}
+endif;
