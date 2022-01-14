@@ -2,11 +2,18 @@
 	$paged = get_query_var( 'paged' ) ? get_query_var( 'paged' ) : 1;
 	$posts = new WP_Query(array( 
 		'post_type' => 'event',
-		'taxonomy' => 'event-type',
-		'term' => $type,
-		'posts_per_page' => $limit,
-		'paged' => $paged
-	)); 
+		'posts_per_page' => -1,
+		'paged' => $paged,
+		'tax_query' => array(
+			'relation' => 'AND',
+			array(
+				'taxonomy' => 'event-type',
+				'field' => 'slug',
+				'terms' => array( 'webinar', 'workshop'),
+			),
+		),
+	),
+); 
 ?>
 <h1>Events</h1>
 

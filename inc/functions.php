@@ -63,6 +63,7 @@ if(!post_type_exists( 'event' )):
 	        'hierarchical'       => false,
 	        'menu_position'      => null,
 	        'supports'           => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments' ),
+	        'taxonomies'		=> array('post_tag'),
 	    );
 	 
 	    register_post_type( 'event', $args );
