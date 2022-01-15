@@ -19,3 +19,20 @@ if( ! function_exists('register_event_shortcode')):
 		return $content;
 	}
 endif;
+
+if( ! function_exists('register_eventWithFilter_shortcode')):
+	add_shortcode("event-filter", "register_eventWithFilter_shortcode");
+	function register_eventWithFilter_shortcode($attr){
+		$attr = shortcode_atts(array(
+			"type" => "",
+			"limit"	=> 5
+		), $attr, 'event');
+		$type = $attr['type'];
+		$limit = $attr['limit'];
+		ob_start();
+		include EVENT_PLUGIN_DIR_PATH . 'views/event-filter.php';
+		$content = ob_get_contents();
+		ob_end_clean();
+		return $content;
+	}
+endif;

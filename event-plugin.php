@@ -13,3 +13,5 @@ define ('EVENT_PLUGIN_DIR_PATH', plugin_dir_path( __FILE__ ));
 include EVENT_PLUGIN_DIR_PATH . 'inc/functions.php';
 include EVENT_PLUGIN_DIR_PATH . 'inc/shortcode.php';
 include EVENT_PLUGIN_DIR_PATH . 'inc/rest-api.php';
+include EVENT_PLUGIN_DIR_PATH . 'inc/filter-ajax.php';
+
