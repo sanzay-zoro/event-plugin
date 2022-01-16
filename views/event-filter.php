@@ -16,6 +16,23 @@
       <label for="<?php echo $eventType->slug; ?>"><?php echo $eventType->name; ?></label>
     </li>
   <?php endforeach; ?>
+  <h2>Tags</h2>
+    <li>
+      <input type="checkbox" name="eventTag" value = "wordpress">
+      <label for="wordpress">WordPress</label>
+    </li>
+    <li>
+      <input type="checkbox" name="eventTag" value = "react">
+      <label for="react">React</label>
+    </li>
+    <li>
+      <input type="checkbox" name="eventTag" value = "web">
+      <label for="web">Web</label>
+    </li>
+    <li>
+      <input type="checkbox" name="eventTag" value = "web-designer">
+      <label for="web-designer">Web Designer</label>
+    </li>
 </ul>
 
 <?php 
@@ -35,6 +52,7 @@
 			<?php while ( $posts->have_posts() ) : $posts->the_post(); ?>
 					<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 					    <h2><?php the_title(); ?></h2>
+              <?php the_content(); ?>
 				</div>
 			<?php endwhile;?>
 		</div>
